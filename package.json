@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/creativetimofficial/argon-dashboard-react/issues"
   },
-  "homepage": "https://user-management-react-1.herokuapp.com",
+  "homepage": "https://argon-dashboard-reactjs-nodejs.herokuapp.com",
   "scripts": {
     "start-client": "react-scripts start",
     "build": "react-scripts build && (cd server && yarn install)",
