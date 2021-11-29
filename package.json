@@ -75,5 +75,8 @@
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "typescript": "3.7.5"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
