@@ -25,11 +25,11 @@
   "homepage": "https://argon-dashboard-reactjs-nodejs.herokuapp.com",
   "scripts": {
     "start-client": "react-scripts start",
-    "build": "react-scripts build && (cd server && yarn install)",
+    "build": "react-scripts build && (cd server && npm install)",
     "build-dev": "react-scripts build && (cd server && npm install)",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "cd server && yarn start",
+    "start": "cd server && npm start",
     "start-dev": "cd server && npm start",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
     "compile-sass": "node-sass src/assets/scss/argon-dashboard-react.scss src/assets/css/argon-dashboard-react.css",
