@@ -1,0 +1,45 @@
+{
+  "name": "geniusparkle-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build": "prisma generate",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geniusparkle-team/geniusparkle-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geniusparkle-team/geniusparkle-backend/issues"
+  },
+  "homepage": "https://github.com/geniusparkle-team/geniusparkle-backend#readme",
+  "dependencies": {
+    "@prisma/client": "^3.5.0",
+    "axios": "^0.21.4",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-formidable-v2": "^2.2.1",
+    "file-type": "^16.5.3",
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^3.0.0",
+    "nodemailer": "^6.6.3",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "sharp": "^0.29.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "prisma": "^3.0.2"
+  },
+  "engines": {
+    "node": "14.15.4"
+  }
+}

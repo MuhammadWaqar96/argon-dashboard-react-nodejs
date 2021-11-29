@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["filterJson"]
+}
+
+model account {
+  id       Int         @id @default(autoincrement())
+  name     String
+  email    String      @unique @db.VarChar(45)
+  password String      @db.VarChar(150)
+  birthday DateTime?   @db.Date
+  gender   Gender?     @default(unknow)
+  isActive Boolean     @default(true)
+  isAdmin  Boolean     @default(false)
+  verify   Boolean     @default(false)
+  avatar   String?     @db.Text
+  type     accountType @default(student)
+
+  otherData String? @db.VarChar(150) // Useless field
+  note      String? @db.Text // No need for that
+
+  updateDate DateTime @default(now()) @updatedAt @db.Timestamp(6)
+  createDate DateTime @default(now()) @updatedAt @db.Timestamp(6)
+
+  discordTokens     Json?   @db.Json
+  googleTokens      Json?   @db.Json
+  youtubeChannelId  String? @unique
+  youtubePlaylistId String? @unique
+  videos            Video[]
+
+  followedBy Follows[] @relation("follower")
+  following  Follows[] @relation("following")
+
+  connections         account[] @relation("connections")
+  connectionsRelation account[] @relation("connections")
+
+  connectionsRequest     connectionRequest[] @relation("from")
+  sentConnectionsRequest connectionRequest[] @relation("to")
+
+  refreshTokens RefreshToken[]
+}
+
+model RefreshToken {
+  token        String    @id @db.Text
+  user         account   @relation(fields: [user_id], references: [id])
+  user_id      Int
+  created_date DateTime  @default(now()) @db.Timestamptz
+  expires      DateTime? @db.Timestamptz
+}
+
+model Video {
+  id          String  @id
+  title       String
+  thumbnail   String  @db.Text
+  description String? @db.Text
+  player      String? @db.Text
+  account     account @relation(fields: [accountId], references: [id])
+  accountId   Int
+}
+
+model Follows {
+  follower    account @relation("follower", fields: [followerId], references: [id])
+  followerId  Int
+  following   account @relation("following", fields: [followingId], references: [id])
+  followingId Int
+
+  @@id([followerId, followingId])
+}
+
+model connectionRequest {
+  id     String  @id @default(uuid())
+  fromId Int
+  toId   Int
+  from   account @relation("from", fields: [fromId], references: [id])
+  to     account @relation("to", fields: [toId], references: [id])
+
+  @@unique([fromId, toId])
+}
+
+enum Gender {
+  male
+  female
+  unknow
+}
+
+enum accountType {
+  student
+  teacher
+}
