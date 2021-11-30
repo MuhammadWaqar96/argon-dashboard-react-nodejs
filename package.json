@@ -25,7 +25,7 @@
   "homepage": "https://argon-dashboard-reactjs-nodejs.herokuapp.com",
   "scripts": {
     "start-client": "react-scripts start",
-    "build": "react-scripts build && (cd server && npm install)",
+    "build": "react-scripts build && (cd server && npm install && npx prisma migrate deploy)",
     "build-dev": "react-scripts build && (cd server && npm install)",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
