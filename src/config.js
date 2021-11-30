@@ -1,6 +1,6 @@
 const config = {
     WS_BASE_URL: '/api/',
-    DOMAIN_NAME: 'http://localhost:8080',
+    DOMAIN_NAME: '',
     DEMO: false
 }
 
